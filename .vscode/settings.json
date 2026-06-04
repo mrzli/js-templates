@@ -14,5 +14,7 @@
     "clear": true,
     "echo": true,
     "ls": true
-  }
+  },
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.preferences.importModuleSpecifier": "non-relative"
 }

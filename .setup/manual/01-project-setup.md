@@ -37,7 +37,45 @@
 
 - Commit with "copy setup files".
 
-## Add Script for Backporting Setup Files
+## Setup Path Aliases
+
+- Add dependecies:
+  ```bash
+  bun add -d vite-tsconfig-paths
+  ```
+- This allows you to avoid duplication of path aliases in both `tsconfig.json` and `vite.config.ts`.
+
+### Update `vite.config.ts`
+
+- Resolve tsconfig paths (to avoid adding duplicated alias entries):
+  ```ts
+  import tsconfigPaths from 'vite-tsconfig-paths';
+  // ...
+  plugins: [/* ... */],
+  resolve: {
+    tsconfigPaths: true,
+  },
+  ```
+
+### Add Path Aliases to `tsconfig.app.json`
+
+- Add the following path aliases to `compilerOptions`:
+  ```json
+  "compilerOptions": {
+    // other options...
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components": ["./src/app/components"],
+      "@components/*": ["./src/app/components/*"]
+    }
+  }
+  ```
+
+### Finalize Step
+
+- Commit with "setup path aliases".
+
+## Backport
 
 - Add the following script to `package.json`:
   ```json
