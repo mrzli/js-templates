@@ -7,6 +7,21 @@
   bun add -d eslint-plugin-simple-import-sort prettier
   ```
 
+### Update `package.json`
+
+- Remove any existing `lint` and `format` scripts.
+- Add the following scripts:
+  ```json
+  "scripts": {
+    // other scripts...
+    "pretty": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "bun run pretty && bun run lint:fix",
+    "backport": "..."
+  }
+  ```
+
 ### Update Lint Config File
 
 - This refers to `eslint.config.js`.
@@ -31,21 +46,6 @@
        },
     }
   // ...
-  ```
-
-### Update `package.json`
-
-- Remove any existing `lint` and `format` scripts.
-- Add the following scripts:
-  ```json
-  "scripts": {
-    // other scripts...
-    "pretty": "prettier --write .",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "bun run pretty && bun run lint:fix",
-    "backport": "..."
-  }
   ```
 
 ### Finalize Step

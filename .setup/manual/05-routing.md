@@ -113,8 +113,7 @@
 ## Loader Example
 
 - Create `src/app/examples/loader/` directory.
-- Create `loader-page.tsx` under that directory.
-- Add stub content.
+- Create `loader-page.tsx` under that directory with stub content.
 - Update `router.tsx`, add `/examples/loader` route.
 - Update `ExamplesPage` to have a link to `loader` page.
 
