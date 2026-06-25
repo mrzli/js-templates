@@ -72,7 +72,7 @@
 
 - Add imports:
   ```tsx
-  import type { CSSProperties, FC } from 'react';
+  import type { CSSProperties, ReactNode } from 'react';
   import { Link, Outlet } from 'react-router';
   ```
 - Add styles, as module variables outside of the component:
@@ -148,12 +148,12 @@
 - Display the data in a page, in a `div` for example.
 - Example:
   ```tsx
-  import type { FC } from 'react';
+  import type { ReactNode } from 'react';
   import { useLoaderData } from 'react-router';
 
   import { loader } from './loader';
 
-  export const LoaderPage: FC = () => {
+  export function LoaderPage(): ReactNode {
     const data = useLoaderData<typeof loader>();
 
     return (
@@ -162,7 +162,7 @@
         <div>{data}</div>
       </div>
     );
-  };
+  }
   ```
 
 ### Finalize Step

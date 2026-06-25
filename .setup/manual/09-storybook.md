@@ -133,7 +133,7 @@
 - Create file `example-button.stories.tsx` with the following content:
   ```tsx
   import type { Meta, StoryObj } from '@storybook/react-vite';
-  import type { CSSProperties, FC } from 'react';
+  import type { CSSProperties, ReactNode } from 'react';
   import { fn } from 'storybook/test';
 
   interface ExampleButtonProps {
@@ -150,13 +150,13 @@
     color: '#ffffff',
   };
 
-  const ExampleButton: FC<ExampleButtonProps> = ({ label, onClick }) => {
+  function ExampleButton({ label, onClick }: ExampleButtonProps): ReactNode {
     return (
       <button type='button' style={buttonStyle} onClick={onClick}>
         {label}
       </button>
     );
-  };
+  }
 
   const meta = {
     component: ExampleButton,

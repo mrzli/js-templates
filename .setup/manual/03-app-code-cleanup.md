@@ -26,7 +26,8 @@
 - Update component to be exported explicitly as a named export, at the definition point.
 - Remove any remaining default exports.
 - Update imports that reference the component to import the named export.
-- Change the component definition to a lambda. Variable type shoule be `FC`, imported from `react`.
+- Add a return value of `ReactNode` to the component definition.
+- Import `ReactNode` from `react` if it is not already imported, as a type import.
 - Simplify the component by following the subsequent instructions.
 - Remove all code related to state, effects, event handlers, or any other logic. Convert it to a simple presentational component.
 - Make root element a `div` with no class or styles.
@@ -35,7 +36,7 @@
 - Add some basic inline styles typed as `CSSProperties`. These need to imported a as `import type { CSSProperties } from 'react';`.
 - In the end it should look something like this:
   ```tsx
-  import type { CSSProperties, FC } from 'react';
+  import type { CSSProperties, ReactNode } from 'react';
 
   import viteLogo from '/vite.svg';
 
@@ -51,7 +52,7 @@
     marginTop: '1rem',
   };
 
-  export const App: FC = () => {
+  export function App(): ReactNode {
     return (
       <div>
         <h1>template-react</h1>
@@ -62,7 +63,8 @@
         </div>
       </div>
     );
-  };
+  }
+  ```
 
 ### Finalize Step
 

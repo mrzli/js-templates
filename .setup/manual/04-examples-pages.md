@@ -13,11 +13,11 @@
 - Content should be a single `div`, with the `kebab-case` of the file name as its text content.
 - Example for a file named `home-page.tsx`:
   ```tsx
-  import type { FC } from 'react';
+  import type { ReactNode } from 'react';
 
-  export const HomePage: FC = () => {
+  export function HomePage(): ReactNode {
     return <div>home-page</div>;
-  };
+  }
   ```
 
 ### Create `home-page.tsx` File in `app` Directory

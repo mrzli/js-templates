@@ -68,11 +68,11 @@
   ```tsx
   // ...
 
-  export const ContextPage: FC = () => {
+  export function ContextPage(): ReactNode {
     const { appName } = useAppContext();
 
     return <div>App name from context: {appName}</div>;
-  };
+  }
   ```
 
 ### Finalize Step
