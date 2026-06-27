@@ -12,6 +12,7 @@
 - Component name should be in `PascalCase` of the file name.
 - Content should be a single `div`, with the `kebab-case` of the file name as its text content.
 - Example for a file named `home-page.tsx`:
+
   ```tsx
   import type { ReactNode } from 'react';
 
@@ -48,6 +49,5 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "create examples pages structure".
-

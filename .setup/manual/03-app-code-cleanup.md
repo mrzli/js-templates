@@ -35,6 +35,7 @@
 - Leave two image elements referencing one image from `src/assets/` and one from `public/`.
 - Add some basic inline styles typed as `CSSProperties`. These need to imported a as `import type { CSSProperties } from 'react';`.
 - In the end it should look something like this:
+
   ```tsx
   import type { CSSProperties, ReactNode } from 'react';
 
@@ -68,7 +69,7 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "cleanup basic app code".
 
 ## Create Basic App Setup Structure
@@ -81,6 +82,7 @@
 - Move the logic from `src/main.tsx` to `src/setup/run.tsx`.
 - Create an async function called `run` that contains the logic.
 - Make it look something like this:
+
   ```tsx
   import { StrictMode } from 'react';
   import { createRoot } from 'react-dom/client';
@@ -114,6 +116,7 @@
 - It should retain import for `index.css`.
 - Other than that, it should only import and execute the `run` function.
 - It should look like this:
+
   ```tsx
   import './index.css';
 
@@ -124,5 +127,5 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "create basic app setup structure".

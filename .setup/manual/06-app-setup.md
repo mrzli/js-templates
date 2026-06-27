@@ -11,6 +11,7 @@
   - The context consumer hook.
   - Function to create the context value.
 - Example:
+
   ```ts
   import { createContext, useContext } from 'react';
 
@@ -34,11 +35,13 @@
     };
   };
   ```
+
 - Add the file to index exports.
 
 ### Setup Context in the App
 
 - Update `run.tsx` to wrap the app in the context provider:
+
   ```tsx
   // ...
   import { AppContext, createAppContextValue } from './context';
@@ -50,9 +53,7 @@
 
     const content = (
       <StrictMode>
-        <AppContext.Provider value={value}>
-          // ....
-        </AppContext.Provider>
+        <AppContext.Provider value={value}>// ....</AppContext.Provider>
       </StrictMode>
     );
 
@@ -65,6 +66,7 @@
 - Call it `context-page.tsx`, under examples directory.
 - Have it display the `appName` from the context.
 - Example:
+
   ```tsx
   // ...
 
@@ -77,7 +79,7 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup app context".
 
 ## Setup Environment Handling
@@ -99,6 +101,7 @@
 ### Create Env Code
 
 - Create `app-env.ts` in `src/setup` directory:
+
   ```ts
   import { z } from 'zod';
 
@@ -162,6 +165,7 @@
     };
   };
   ```
+
 - Export it in the `index.ts` file.
 
 ### Setup Usage in App
@@ -177,7 +181,7 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup env".
 
 ## Setup App Dependencies
@@ -186,6 +190,7 @@
 
 - Create `app-dependencies.ts` file in `src/setup/` directory.
 - Example:
+
   ```ts
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   export interface AppDependencies {}
@@ -194,6 +199,7 @@
     return {};
   };
   ```
+
 - Add the file to index exports.
 
 ### Add to Context
@@ -202,5 +208,5 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup app dependencies in context".

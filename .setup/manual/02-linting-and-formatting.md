@@ -4,7 +4,7 @@
 
 - Install missing dependencies:
   ```bash
-  bun add -d eslint-plugin-simple-import-sort prettier
+  bun add -d oxfmt
   ```
 
 ### Update `package.json`
@@ -14,38 +14,22 @@
   ```json
   "scripts": {
     // other scripts...
-    "pretty": "prettier --write .",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "bun run pretty && bun run lint:fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fix": "bun run fmt && bun run lint:fix",
+    "check": "bun run fmt:check && bun run lint",
     "backport": "..."
   }
   ```
 
 ### Update Lint Config File
 
-- This refers to `eslint.config.js`.
-- You need to setup `eslint-plugin-simple-import-sort` to sort imports and exports.
-- Add required import and add (or update) `plugins` and `rules` in the config file:
-  ```js
-  // ...
-  import simpleImportSort from 'eslint-plugin-simple-import-sort';
-  // ...
-
-  // ...
-    {
-      // rest of the main config
-       plugins: {
-         // other plugins...
-         'simple-import-sort': simpleImportSort,
-       },
-       rules: {
-         // other rules...
-         'simple-import-sort/imports': 'error',
-         'simple-import-sort/exports': 'error',
-       },
-    }
-  // ...
+- This refers to `.oxlintrc.json`.
+- Update `"plugins"` so it looks like this:
+  ```json
+  "plugins": ["react", "typescript", "oxc", "unicorn", "eslint", "import", "promise", "vitest"],
   ```
 
 ### Finalize Step
@@ -54,7 +38,7 @@
 
 ## Format Project Files
 
-- Do the initial formatting of project files with `bun run format`.
+- Do the initial formatting of project files with `bun run fix`.
 
 ### Finalize Step
 

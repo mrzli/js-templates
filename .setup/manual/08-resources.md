@@ -24,5 +24,5 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit wuth "setup icons".

@@ -12,6 +12,7 @@
       }
       ```
     - `parts/example-api.ts`:
+
       ```ts
       export interface ExampleApi {
         readonly offline: () => Promise<string>;
@@ -29,8 +30,10 @@
         };
       };
       ```
+
     - Create index files for `parts`.
     - `app-api.ts`:
+
       ```ts
       export interface AppApi {
         readonly example: ExampleApi;
@@ -42,11 +45,14 @@
         };
       };
       ```
+
     - Create index file for `api` that exports everything inside it.
+
   - Update `app-dependencies.ts` to create the api and add it to the dependencies.
   - Add example usage of `offline` api function in the context example page.
   - Run `bun run format` to format the updated files.
   - Commit the changes with a message like "setup api stub and example usage".
+
 - Expand api stub:
   - Add a new function in example api which uses `fetch` to get some data from a public api:
     - Call it `jsonPlaceholder`.
@@ -60,4 +66,3 @@
     - Use suspense etc, just like with `offline` function.
   - Run `bun run format` to format the updated files.
   - Commit the changes with a message like "expand api stub and example usage".
-

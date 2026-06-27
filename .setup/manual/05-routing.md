@@ -19,11 +19,13 @@
 - Create `router.tsx` file under that directory.
 - Use 'data mode' routing.
 - Initially, create an empty router file:
+
   ```tsx
   import { createBrowserRouter } from 'react-router';
 
   export const router = createBrowserRouter([]);
   ```
+
 - Add the hierarchy of components to the router configuration.
 - Use `index` routes for default subpages.
 - This is the structure:
@@ -76,6 +78,7 @@
   import { Link, Outlet } from 'react-router';
   ```
 - Add styles, as module variables outside of the component:
+
   ```tsx
   const navStyle: CSSProperties = {
     display: 'flex',
@@ -88,6 +91,7 @@
     color: '#2563eb',
   };
   ```
+
 - Add content inside `div`, links, and `<Outlet />` for rendering child routes:
   ```tsx
   <nav style={navStyle}>
@@ -107,7 +111,7 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup basic routing".
 
 ## Loader Example
@@ -147,6 +151,7 @@
 - Add line: `const data = useLoaderData<typeof loader>();`
 - Display the data in a page, in a `div` for example.
 - Example:
+
   ```tsx
   import type { ReactNode } from 'react';
   import { useLoaderData } from 'react-router';
@@ -167,5 +172,5 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup react-router loader example".

@@ -17,7 +17,7 @@
   - Add import: `import tailwindcss from '@tailwindcss/vite';`
   - Add to plugins array: `tailwindcss()`
 
-### Add Tailwind to the Project 
+### Add Tailwind to the Project
 
 - Update `index.css`:
   - Add `@import 'tailwindcss';`
@@ -31,7 +31,7 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup tailwind".
 
 ## Setup Tailwind Merge
@@ -40,6 +40,7 @@
   - `bun add clsx tailwind-merge`
 - Create `src/util/` directory (if it doesn't exist):
 - Create `styles.ts` file in it:
+
   ```ts
   import { type ClassValue, clsx } from 'clsx';
   import { twMerge } from 'tailwind-merge';
@@ -48,11 +49,12 @@
     return twMerge(clsx(...inputs));
   };
   ```
+
 - Add to index file.
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup tailwind merge utility".
 
 ## Setup Class Variance Authority
@@ -62,5 +64,5 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup class variance authority".

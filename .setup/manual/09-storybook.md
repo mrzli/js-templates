@@ -35,6 +35,7 @@
 
 - This refers to `eslint.config.js`.
 - Add required import and config:
+
   ```js
   // ...
   import storybook from 'eslint-plugin-storybook';
@@ -53,14 +54,12 @@
 #### `main.ts`
 
 - Create `.storybook/main.ts` file with the following content:
+
   ```ts
   import type { StorybookConfig } from '@storybook/react-vite';
 
   const config: StorybookConfig = {
-    stories: [
-      '../stories/**/*.mdx',
-      '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    ],
+    stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
     addons: ['@storybook/addon-docs', '@storybook/addon-themes'],
     framework: '@storybook/react-vite',
   };
@@ -73,6 +72,7 @@
 - Create `.storybook/preview.ts`.
 - You need to import `index.css` for Tailwind styles to work in Storybook.
 - Add the following content:
+
   ```ts
   import '../src/index.css';
 
@@ -104,6 +104,7 @@
 
   export default preview;
   ```
+
 - The above should handle:
   - Theming with Tailwind's `dark` class.
   - Automatically matching action handlers (e.g., `onClick`).
@@ -131,6 +132,7 @@
 
 - Create `stories/example/` directory in the root of the project.
 - Create file `example-button.stories.tsx` with the following content:
+
   ```tsx
   import type { Meta, StoryObj } from '@storybook/react-vite';
   import type { CSSProperties, ReactNode } from 'react';
@@ -173,6 +175,7 @@
     },
   };
   ```
+
 - Alternatively, for better and simpler styles, use tailwind:
   ```tsh
   // ...
@@ -182,5 +185,5 @@
 
 ### Finalize Step
 
-- Format using `bun run format`.
+- Format using `bun run fix`.
 - Commit with "setup storybook".
