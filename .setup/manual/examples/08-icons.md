@@ -1,12 +1,5 @@
 # Resources
 
-## Setup Icons
-
-- Add dependencies:
-  ```bash
-  bun add @iconify/react
-  ```
-
 ### Add Example Page
 
 - Add example for using the icons:
@@ -25,4 +18,4 @@
 ### Finalize Step
 
 - Format using `bun run fix`.
-- Commit wuth "setup icons".
+- Commit wuth "setup icons example".

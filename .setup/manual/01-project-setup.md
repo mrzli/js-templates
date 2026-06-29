@@ -6,6 +6,9 @@
 
 ## Initialize Git Repository
 
+- Do this only if necessary:
+  - If the repo is not already a git repository.
+  - Or if you previously removed the `.git`, and now want to reinitialize it.
 - Run the following command to initialize a new git repository:
   ```bash
   git init
@@ -31,7 +34,7 @@
 
 ### Finalize Step
 
-- Commit with "initial project setup with React + Vite".
+- Commit with "initial project setup".
 
 ## Backport
 
@@ -57,13 +60,6 @@
   cp -a .setup/files/. .
   ```
 
-### Update `.gitignore`
-
-- Add the following lines to `.gitignore`:
-  ```
-  tmp/
-  ```
-
 ### Finalize Step
 
 - Commit with "copy setup files".
@@ -79,19 +75,17 @@
 
 ## Setup Path Aliases
 
-- Add dependecies:
-  ```bash
-  bun add -d vite-tsconfig-paths
-  ```
-- This allows you to avoid duplication of path aliases in both `tsconfig.json` and `vite.config.ts`.
+- This allows cleaner imports in the project, without having to use relative paths in some cases.
 
 ### Update `vite.config.ts`
 
 - Resolve tsconfig paths (to avoid adding duplicated alias entries):
   ```ts
-  import tsconfigPaths from 'vite-tsconfig-paths';
   // ...
-  plugins: [/* ... */, tsconfigPaths()],
+  plugins: [/* ... */],
+  resolve: {
+    tsconfigPaths: true,
+  },
   ```
 
 ### Add Path Aliases to `tsconfig.app.json`
