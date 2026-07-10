@@ -36,7 +36,7 @@
 
 ## Update Index Exports
 
-- Add the file to `setup/` index exports.
+- Add the file to index exports.
 
 ## Setup Context in the App
 
@@ -44,7 +44,7 @@
 
   ```tsx
   // ...
-  import { AppContext, createAppContextValue } from './context';
+  import { AppContext, createAppContextValue } from './app-context';
 
   export async function run(): Promise<void> {
     // ...

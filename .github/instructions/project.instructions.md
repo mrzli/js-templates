@@ -81,5 +81,4 @@ If runnning queries based on instruction files, such as `SETUP.md`, carefully re
 
 - Never alter the following files, either directly or by using terminal commands (after initial copy from `.setup/files`):
   - `.vscode/settings.json`
-  - `.prettierrc`
   - `bunfig.toml`

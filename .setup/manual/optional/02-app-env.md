@@ -1,4 +1,4 @@
-# Env
+# App Env
 
 ## Prerequisites
 
@@ -39,9 +39,9 @@
     readonly backendBaseUrl: string;
   }
 
-  export const appEnv = (): AppEnv => {
+  export function createAppEnv(): AppEnv {
     return envRawToEnv(APP_ENV_RAW);
-  };
+  }
 
   interface AppEnvRaw {
     readonly MODE: AppEnvMode;
@@ -73,7 +73,7 @@
     VITE_BACKEND_BASE_URL: z.url(),
   });
 
-  const envRawToEnv = (raw: AppEnvRaw): AppEnv => {
+  function envRawToEnv(raw: AppEnvRaw): AppEnv {
     const parsed = APP_ENV_SCHEMA.parse(raw);
 
     return {
@@ -85,12 +85,57 @@
       exampleVar: parsed.VITE_EXAMPLE_VAR,
       backendBaseUrl: parsed.VITE_BACKEND_BASE_URL,
     };
-  };
+  }
   ```
 
 ## Update Index Exports
 
-- Export it in the `index.ts` file.
+- Export it in the index file.
+
+## Update `app-context.tsx`
+
+- Add to the context value:
+
+  ```tsx
+  import type { AppEnv } from './app-env';
+
+  export interface AppContextValue {
+    // other fields
+    readonly env: AppEnv;
+  }
+
+  export function createAppContextValue(
+    // ...
+    env: AppEnv,
+    // ...
+  ): AppContextValue {
+    return {
+      // other fields
+      env,
+    };
+  }
+  ```
+
+## Update `run.tsx`
+
+- Update to use inside app:
+
+  ```tsx
+  import { createAppEnv } from './app-env';
+
+  export async function run(): Promise<void> {
+    // ...
+
+    const env = createAppEnv();
+    const value = createAppContextValue(
+      // ...
+      env,
+      // ...
+    );
+
+    // ...
+  }
+  ```
 
 ### Finalize Step
 

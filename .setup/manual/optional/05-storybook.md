@@ -7,19 +7,18 @@
    bun create storybook@latest --features docs
   ```
 
-## Setup Storybook
+## Add Dependencies
 
-- Add dependencies:
+- Run:
   ```bash
   bun add -d \
     storybook \
     @storybook/react-vite \
     @storybook/addon-docs \
-    @storybook/addon-themes \
-    eslint-plugin-storybook
+    @storybook/addon-themes
   ```
 
-### Update `package.json`
+## Update `package.json`
 
 - Add the following scripts:
   ```json
@@ -31,27 +30,11 @@
   }
   ```
 
-### Update Configurations
-
-- This refers to `eslint.config.js`.
-- Add required import and config:
-
-  ```js
-  // ...
-  import storybook from 'eslint-plugin-storybook';
-  // ...
-
-  export default defineConfig([
-    // other configs...
-    ...storybook.configs['flat/recommended'],
-  ]);
-  ```
-
-### Add Storybook Config Files
+## Add Storybook Config Files
 
 - Create `.storybook/` directory in the root of the project.
 
-#### `main.ts`
+### `main.ts`
 
 - Create `.storybook/main.ts` file with the following content:
 
@@ -67,10 +50,11 @@
   export default config;
   ```
 
-#### `preview.ts`
+### `preview.ts`
 
 - Create `.storybook/preview.ts`.
 - You need to import `index.css` for Tailwind styles to work in Storybook.
+  - This may cause an error, see next step for a fix.
 - Add the following content:
 
   ```ts
@@ -110,7 +94,7 @@
   - Automatically matching action handlers (e.g., `onClick`).
   - Automatically matching color and date controls (this was here by default when storybook preview file was generated).
 
-#### `tsconfig.json`
+### `tsconfig.json`
 
 - Create `.storybook/tsconfig.json` with the following content:
   ```json
@@ -121,69 +105,36 @@
   ```
 - If you import `index.css` in `preview.ts`, your editor may complain about that import. This `tsconfig.json` file will fix that issue.
 
-### Update `tsconfig.app.json`
+## Update `tsconfig.app.json`
 
 - Add `stories` to the `include` array:
   ```json
   "include": ["src", "stories"]
   ```
 
-### Add Example Stories
+## Add Stories Directory
 
-- Create `stories/example/` directory in the root of the project.
-- Create file `example-button.stories.tsx` with the following content:
+- Create `stories/` directory in the root of the project.
 
-  ```tsx
-  import type { Meta, StoryObj } from '@storybook/react-vite';
-  import type { CSSProperties, ReactNode } from 'react';
-  import { fn } from 'storybook/test';
+## Linting (Optional)
 
-  interface ExampleButtonProps {
-    readonly label: string;
-    readonly onClick?: () => void;
-  }
+- TODO: Not tested.
+- Optionally, you can add storybook linting.
+- Add dependencies:
 
-  const buttonStyle: CSSProperties = {
-    cursor: 'pointer',
-    border: 'none',
-    borderRadius: '0.25rem',
-    backgroundColor: '#3b82f6',
-    padding: '0.5rem 1rem',
-    color: '#ffffff',
-  };
-
-  function ExampleButton({ label, onClick }: ExampleButtonProps): ReactNode {
-    return (
-      <button type='button' style={buttonStyle} onClick={onClick}>
-        {label}
-      </button>
-    );
-  }
-
-  const meta = {
-    component: ExampleButton,
-  } satisfies Meta<typeof ExampleButton>;
-
-  export default meta;
-
-  type Story = StoryObj<typeof meta>;
-
-  export const Primary: Story = {
-    args: {
-      label: 'Click Me',
-      onClick: fn(),
-    },
-  };
+  ```bash
+  bun add -d eslint-plugin-storybook
   ```
 
-- Alternatively, for better and simpler styles, use tailwind:
-  ```tsh
-  // ...
-  className='cursor-pointer rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none'
-  // ...
+- Update `.oxlintrc.json` to include storybook plugin, add to object root:
+
+  ```json
+  {
+    "jsPlugins": ["eslint-plugin-storybook"]
+  }
   ```
 
-### Finalize Step
+## Finalize
 
 - Format using `bun run fix`.
 - Commit with "setup storybook".

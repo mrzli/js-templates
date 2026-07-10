@@ -21,6 +21,5 @@
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "js/ts.tsdk.path": "node_modules/typescript/lib",
-  "js/ts.preferences.importModuleSpecifier": "non-relative",
   "oxc.fmt.configPath": ".oxfmtrc.json"
 }

@@ -107,3 +107,15 @@
 ### Finalize Step
 
 - Commit with "setup path aliases".
+
+## Other Dependencies
+
+- Until Temporal becomes the default and supported by all browsers, install the polyfill:
+
+  ```bash
+  bun add @js-temporal/polyfill
+  ```
+
+### Finalize Step
+
+- Commit with "install other dependencies".
