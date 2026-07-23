@@ -13,7 +13,8 @@
   ```tsx
   import { useEffect, useState, type ReactNode } from 'react';
 
-  import type { JsonPlaceholderPost } from '@/api';
+  import { fromDtoExampleJsonPlaceholderPost } from '@/domain/helpers';
+  import type { JsonPlaceholderPost } from '@/domain/types';
   import { useAppContext } from '@/setup';
 
   export function ExamplesApiPage(): ReactNode {
@@ -94,7 +95,7 @@
           const result = await dependencies.api.example.jsonPlaceholder(1, {
             signal: controller.signal,
           });
-          setPost(result);
+          setPost(fromDtoExampleJsonPlaceholderPost(result));
           setError(undefined);
         } catch (err) {
           if (err instanceof Error && err.name !== 'AbortError') {

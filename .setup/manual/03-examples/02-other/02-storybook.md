@@ -7,7 +7,10 @@
 ## Example
 
 - Create `stories/example/` directory in the root of the project.
-- Create file `example-button.stories.tsx` with the following content:
+
+### Create `example-button.stories.tsx`
+
+- In `stories/example/` directory, with content:
 
   ```tsx
   import type { Meta, StoryObj } from '@storybook/react-vite';
@@ -61,7 +64,7 @@
   // ...
   ```
 
-### Finalize
+## Finalize
 
 - Format using `bun run fix`.
 - Commit with "add storybook example".

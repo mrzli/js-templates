@@ -36,16 +36,20 @@
 
 - Commit with "initial project setup".
 
-## Backport
+## Scripts
 
 - Add the following script to `package.json`:
+
   ```json
   "scripts": {
     // other scripts...
+    "preflight": "bun run build",
     "backport": "./.setup/backport.sh . ../../templates/template-react"
   }
   ```
-- Adjust target path if necessary, to point to `template-react` repo location.
+
+- `preflight` will be expanded later on to include other checks, such as linting, formatting and testing. This is why it is added here.
+- For `backport`, adjust target path if necessary, to point to `template-react` repo location.
 
 ### Finalize Step
 
@@ -55,9 +59,10 @@
 
 ### Copy Setup Files
 
-- Copy files from `.setup/files/` into project root using:
+- From root:
+
   ```bash
-  cp -a .setup/files/. .
+  cp -a .setup/files/config/. .
   ```
 
 ### Finalize Step
@@ -97,9 +102,7 @@
     // other options...
 
     "paths": {
-      "@/*": ["./src/*"],
-      "@components": ["./src/app/components"],
-      "@components/*": ["./src/app/components/*"]
+      "@/*": ["./src/*"]
     }
   }
   ```

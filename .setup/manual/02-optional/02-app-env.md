@@ -11,7 +11,11 @@
   bun add zod
   ```
 
-### Create `.env` Files
+## Notes
+
+- Client-side environment variables should use the `VITE_` prefix.
+
+## Create `.env` Files
 
 - Create `.env.local` and `.env.sample` files in the root of the project.
 - Both should have this sample content:
@@ -20,9 +24,13 @@
   VITE_BACKEND_BASE_URL=http://localhost:3000
   ```
 
+## Create `config` Directory
+
+- Create `src/config/` directory in the root of the project.
+
 ## Create `app-env.ts`
 
-- Create `app-env.ts` in `src/setup/` directory:
+- Create `app-env.ts` in `src/config/` directory:
 
   ```ts
   import { z } from 'zod';
@@ -88,16 +96,16 @@
   }
   ```
 
-## Update Index Exports
+## Create Index File
 
-- Export it in the index file.
+- Export all from `app-env.ts`.
 
 ## Update `app-context.tsx`
 
 - Add to the context value:
 
   ```tsx
-  import type { AppEnv } from './app-env';
+  import type { AppEnv } from '../config';
 
   export interface AppContextValue {
     // other fields
@@ -121,7 +129,7 @@
 - Update to use inside app:
 
   ```tsx
-  import { createAppEnv } from './app-env';
+  import { createAppEnv } from '../config';
 
   export async function run(): Promise<void> {
     // ...

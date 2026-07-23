@@ -1,10 +1,10 @@
-# API
+# Redux
 
 ## Prerequisites
 
 - You have to have routing set up.
 - You need to have examples pages structure set up.
-- You need to have Redux set up.
+- You need to have redux set up.
 
 ## Example
 

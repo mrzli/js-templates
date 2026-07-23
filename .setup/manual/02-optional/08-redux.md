@@ -5,30 +5,16 @@
 - Run:
 
   ```bash
-  bun add redux react-redux
+  bun add redux react-redux @redux-devtools/extension
   ```
 
-## Create Base Types
+## Copy Files
 
-- Create `src/types/` directory if it does not exist.
+- From root:
 
-### Add `action-base.ts` Type
-
-- With content:
-
-  ```ts
-  import type { Action } from 'redux';
-
-  export interface ActionBase<Type extends string, Payload> extends Action<Type> {
-    readonly type: Type;
-    readonly payload: Payload;
-  }
+  ```bash
+  cp -a .setup/files/redux/. .
   ```
-
-### Add Index File to `types/` Directory
-
-- Or just update if it already exists.
-- Export all from `action-base.ts` file.
 
 ## Add Store Code
 
@@ -91,7 +77,7 @@
 - Inside `action/parts/` directory, with content:
 
   ```ts
-  import type { ActionBase } from '@/types';
+  import type { ActionBase } from '@/shared/redux';
 
   import type { ActionTypeExampleChange, ActionTypeExampleReset } from '../../action-type';
 
@@ -242,13 +228,15 @@
     switch (action.type) {
       case ACTION_TYPE_EXAMPLE_CHANGE: {
         return {
+          ...state,
           value: state.value + action.payload,
           lastUpdatedAt: Temporal.Now.plainDateTimeISO().toString(),
         };
       }
       case ACTION_TYPE_EXAMPLE_RESET: {
         return {
-          ...STATE_INITIAL_EXAMPLE,
+          ...state,
+          value: 0,
           lastUpdatedAt: Temporal.Now.plainDateTimeISO().toString(),
         };
       }
@@ -358,14 +346,22 @@
 - Inside `store/` directory, with content:
 
   ```ts
+  import { composeWithDevToolsDevelopmentOnly } from '@redux-devtools/extension';
   import { legacy_createStore as createStore } from 'redux';
+
+  import type { AppDependencies } from '@/dependencies';
 
   import { STATE_INITIAL_ROOT } from './state-initial';
   import { rootReducer } from './state-reducer';
   import type { AppStore } from './types';
 
-  export function createAppStore(): AppStore {
-    return createStore(rootReducer, STATE_INITIAL_ROOT);
+  export function createAppStore(_dependencies: AppDependencies): AppStore {
+    const composeEnhancers = composeWithDevToolsDevelopmentOnly({});
+    const enhancer = composeEnhancers();
+
+    const store = createStore(rootReducer, STATE_INITIAL_ROOT, enhancer);
+
+    return store;
   }
   ```
 
@@ -396,7 +392,7 @@
   export async function run(): Promise<void> {
     // ...
     const dependencies = createAppDependencies(/* ... */);
-    const store = createAppStore();
+    const store = createAppStore(dependencies);
 
     const value = createAppContextValue(env, dependencies);
 

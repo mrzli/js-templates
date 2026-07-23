@@ -28,6 +28,8 @@ If runnning queries based on instruction files, such as `SETUP.md`, carefully re
 - Avoid inline comments unless requested.
 - Match existing code style in touched files.
 - Make sure to update relevant comments and documentation when making code/configuration changes that affect them.
+- Use an empty line to separate function definitions.
+- Use code blocks for each case in switch statements, even if it is not strictly required, to avoid confusion and maintain consistency.
 
 ## React Guidelines
 

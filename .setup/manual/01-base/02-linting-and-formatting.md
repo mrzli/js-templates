@@ -10,7 +10,8 @@
 ### Update `package.json`
 
 - Remove any existing `lint` and `format` scripts.
-- Add the following scripts:
+- Add the following scripts (and update `preflight` script):
+
   ```json
   "scripts": {
     // other scripts...
@@ -20,6 +21,7 @@
     "lint:fix": "oxlint --fix",
     "fix": "bun run fmt && bun run lint:fix",
     "check": "bun run fmt:check && bun run lint",
+    "preflight": "bun run fix && bun run build",
     "backport": "..."
   }
   ```

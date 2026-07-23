@@ -10,7 +10,9 @@
 ### Create Router File
 
 - Create `src/routing/` directory if it does not already exist.
-- Create `router.tsx` file under that directory.
+
+#### Create `router.tsx` File
+
 - Use 'data mode' routing.
 - Initially, create an empty router file:
 
@@ -37,13 +39,17 @@
   }
   ```
 
+#### Create `index.ts` File
+
+- Export all from `router.tsx`.
+
 ### Use Router in the Application
 
 - Update the file that renders the app (`setup/run.tsx` or wherever else you placed it).
 - Add imports:
   ```tsx
   import { RouterProvider } from 'react-router';
-  import { router } from '../routing/router';
+  import { router } from '../routing';
   ```
 - Replace `<App />` with:
   ```tsx

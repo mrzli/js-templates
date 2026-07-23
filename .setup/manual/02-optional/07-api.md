@@ -5,19 +5,40 @@
 - You need to have Http Client set up.
 - You need to have context set up.
 
+## Copy Files
+
+- From root:
+
+  ```bash
+  cp -a .setup/files/api/. .
+  ```
+
 ## Create Directory for API
 
 - Create `src/api/` if it does not exist, but it should already be set up beacause of Http Client.
 
-## Add Types
+## Add `types`
 
-- Add `types.ts` file in `src/api/` directory:
+- Create `src/api/types/` directory.
+- Create `src/api/types/responses/` directory.
+
+### Add `example-json-placeholder-post.ts` File
+
+- With content:
 
   ```ts
-  export interface ApiRequestOptions {
-    readonly signal?: AbortSignal;
+  export interface ResponseDataExampleJsonPlaceholderPost {
+    readonly userId: number;
+    readonly id: number;
+    readonly title: string;
+    readonly body: string;
   }
   ```
+
+### Add Index Files
+
+- Add index file to `reponses/` directory, which exports all from all files.
+- Add index file to `types/` directory, which exports all from `responses/` directory.
 
 ## Add `parts`
 
@@ -29,22 +50,17 @@
 - Add `example.ts` file in `src/api/parts/` directory:
 
   ```ts
-  import type { HttpClient } from '../http-client';
-  import type { ApiRequestOptions } from '../types';
+  import type { ApiRequestOptions } from '@/shared/api';
+  import type { HttpClient } from '@/shared/http-client';
 
-  export interface JsonPlaceholderPost {
-    readonly userId: number;
-    readonly id: number;
-    readonly title: string;
-    readonly body: string;
-  }
+  import type { ResponseDataExampleJsonPlaceholderPost } from '../types';
 
   export interface ExampleApi {
     readonly offline: (options?: ApiRequestOptions) => Promise<string>;
     readonly jsonPlaceholder: (
       id: number,
       options?: ApiRequestOptions,
-    ) => Promise<JsonPlaceholderPost>;
+    ) => Promise<ResponseDataExampleJsonPlaceholderPost>;
   }
 
   export const createExampleApi = (client: HttpClient): ExampleApi => {
@@ -57,13 +73,12 @@
         });
       },
       jsonPlaceholder: async (id, options?: ApiRequestOptions) => {
-        const response = await client.request({
+        const response = await client.get({
           baseUrl: 'https://jsonplaceholder.typicode.com',
           path: `posts/${id}`,
-          method: 'GET',
           signal: options?.signal,
         });
-        return response.data as JsonPlaceholderPost;
+        return response.data as ResponseDataExampleJsonPlaceholderPost;
       },
     };
   };
@@ -94,7 +109,49 @@
 
 ## Add Index File to `api/` Directory
 
-- Make sure it exports `http-client`, `parts`, `app.ts` and `types.ts`.
+- Make sure it exports `parts`, `types` and `app.ts`.
+
+## Add Domain Code
+
+- Add `src/domain/` directory if it does not exist.
+- Add `helpers/` and `types/` directories inside `src/domain/` if they do not exist.
+
+### Add `json-placeholder-post.ts` File to `types/` Directory
+
+- With content:
+
+  ```ts
+  export interface JsonPlaceholderPost {
+    readonly userId: number;
+    readonly id: number;
+    readonly title: string;
+    readonly body: string;
+  }
+  ```
+
+### Add Index File to `types/` Directory
+
+- Export all from all files (just one file for now).
+
+### Add `exacmple-json-placeholder-post.ts` File to `helpers/` Directory
+
+- With content:
+
+  ```ts
+  import type { ResponseDataExampleJsonPlaceholderPost } from '@/api';
+
+  import type { JsonPlaceholderPost } from '../types';
+
+  export function fromDtoExampleJsonPlaceholderPost(
+    dto: ResponseDataExampleJsonPlaceholderPost,
+  ): JsonPlaceholderPost {
+    return dto;
+  }
+  ```
+
+### Add Index File to `helpers/` Directory
+
+- Export all from all files (just one file for now).
 
 ## Update Application to Use API
 
