@@ -9,7 +9,7 @@ describe('assert', () => {
     });
 
     it('throws an error if the condition is false', () => {
-      expect(() => invariant(false, 'message')).toThrowError('message');
+      expect(() => invariant(false, 'message')).toThrow('message');
     });
   });
 
@@ -19,7 +19,7 @@ describe('assert', () => {
     });
 
     it('throws an error if the value is undefined', () => {
-      expect(() => ensureNotUndefined(undefined)).toThrowError('Value is undefined.');
+      expect(() => ensureNotUndefined(undefined)).toThrow('Value is undefined.');
     });
   });
 
@@ -29,7 +29,7 @@ describe('assert', () => {
     });
 
     it('throws an error if the value is null', () => {
-      expect(() => ensureNotNull(null)).toThrowError('Value is null.');
+      expect(() => ensureNotNull(null)).toThrow('Value is null.');
     });
   });
 
@@ -39,11 +39,11 @@ describe('assert', () => {
     });
 
     it('throws an error if the value is null', () => {
-      expect(() => ensureNotNullish(null)).toThrowError('Value is undefined or null.');
+      expect(() => ensureNotNullish(null)).toThrow('Value is undefined or null.');
     });
 
     it('throws an error if the value is undefined', () => {
-      expect(() => ensureNotNullish(undefined)).toThrowError('Value is undefined or null.');
+      expect(() => ensureNotNullish(undefined)).toThrow('Value is undefined or null.');
     });
   });
 });

@@ -44,7 +44,7 @@
   "scripts": {
     // other scripts...
     "preflight": "bun run build",
-    "backport": "./.setup/backport.sh . ../../templates/template-react"
+    "backport": "./.setup/backport.sh . ../template-react"
   }
   ```
 
@@ -62,7 +62,7 @@
 - From root:
 
   ```bash
-  cp -a .setup/files/config/. .
+  cp -a .setup/files/initial/. .
   ```
 
 ### Finalize Step
