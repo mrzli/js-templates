@@ -44,7 +44,7 @@
   "scripts": {
     // other scripts...
     "preflight": "bun run build",
-    "backport": "./.setup/backport.sh . ../js-templates/react"
+    "backport": "./.setup/backport.sh . ../../mrzli/js-templates/react"
   }
   ```
 
