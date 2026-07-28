@@ -1,0 +1,29 @@
+{
+  "name": "<package-name>",
+  "version": "0.0.0",
+  "description": "<package-description>",
+  "homepage": "https://github.com/<owner>/<repo>#readme",
+  "bugs": {
+    "url": "https://github.com/<owner>/<repo>/issues"
+  },
+  "license": "MIT",
+  "author": "Goran Mržljak <goran.mrzljak@mail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<owner>/<repo>.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit"
+  }
+}
