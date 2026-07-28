@@ -44,12 +44,12 @@
   "scripts": {
     // other scripts...
     "preflight": "bun run build",
-    "backport": "./.setup/backport.sh . ../template-react"
+    "backport": "./.setup/backport.sh . ../js-templates/react"
   }
   ```
 
 - `preflight` will be expanded later on to include other checks, such as linting, formatting and testing. This is why it is added here.
-- For `backport`, adjust target path if necessary, to point to `template-react` repo location.
+- For `backport`, adjust target path if necessary, to point to `js-templates` repo location, `react` directory.
 
 ### Finalize Step
 
