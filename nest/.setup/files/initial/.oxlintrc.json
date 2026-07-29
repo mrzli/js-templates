@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": [".setup/**"],
+  "plugins": ["eslint", "typescript", "oxc", "unicorn", "import", "node", "promise", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "typescript/no-extraneous-class": [
+      "warn",
+      {
+        "allowWithDecorator": true
+      }
+    ],
+    "unicorn/prefer-node-protocol": "error",
+    "vitest/valid-title": ["warn", { "allowArguments": true }]
+  }
+}
