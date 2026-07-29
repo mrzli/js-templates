@@ -18,12 +18,14 @@
 
 ## Update `package.json`
 
-- Add scripts:
+- Add the following scripts (and update `preflight` script):
 
   ```json
   "scripts": {
     // other scripts...
-    "test": "vitest"
+    "test": "vitest run",
+    "preflight": "bun run typecheck && bun run check && bun run test && bun run build",
+    "prepare": "..."
   }
   ```
 

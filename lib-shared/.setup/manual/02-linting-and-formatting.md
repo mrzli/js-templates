@@ -9,7 +9,7 @@
 
 ### Update `package.json`
 
-- Add these scripts:
+- Add the following scripts (and update `preflight` script):
 
   ```json
   "scripts": {
@@ -19,7 +19,9 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fix": "bun run fmt && bun run lint:fix",
-    "check": "bun run fmt:check && bun run lint"
+    "check": "bun run fmt:check && bun run lint",
+    "preflight": "bun run typecheck && bun run check && bun run build",
+    "prepare": "..."
   }
   ```
 
