@@ -7,7 +7,6 @@
 ## Description
 
 - This section will provide the structure for files and components showcasing the features described in subsequent steps.
-- Create `src/app/examples/` directory if it does not already exist.
 
 ## Stub Page Structure
 
@@ -39,6 +38,10 @@
       ├── app.tsx
       └── home-page.tsx
   ```
+
+## Create Examples Directory
+
+- Create `src/app/examples/` directory if it does not already exist.
 
 ## Create Page Stubs
 

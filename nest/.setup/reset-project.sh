@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-KEEP=(.git .github .setup .vscode)
+KEEP=(.git .github .setup .vscode docs)
 DRY_RUN=false
 
 if [[ "${1-}" == "--dry-run" ]]; then
