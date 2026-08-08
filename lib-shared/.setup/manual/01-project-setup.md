@@ -51,8 +51,8 @@
   - `name`.
   - `description`.
   - `homepage`.
-  - `repository.url`.
   - `bugs.url`.
+  - `repository.url`.
 
 ### Install Dependencies
 
